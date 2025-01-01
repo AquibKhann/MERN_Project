@@ -9,15 +9,20 @@ import AdminProducts from './pages/admin-view/products';
 import AdminFeature from './pages/admin-view/features';
 import AdminDashboard from './pages/admin-view/dashboard';
 import AdminOrders from './pages/admin-view/order';
+import ShoppingLayout from './components/shopping-view/layout';
+import NotFound from './pages/not-found';
+import ShoppingHome from './pages/shopping-view/home';
+import ShoppingListing from './pages/shopping-view/listing';
+import ShoppingCheckout from './pages/shopping-view/checkout';
+import ShoppingUser from './pages/shopping-view/account';
 
 const App = () => {
   return (
 
     <div className="flex flex-col overflow-hidden bg-white">
 
-      <h1 className="text-black bg-white">Header component</h1>
-
       <Routes>
+
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<AuthLogin />} />
           <Route path="register" element={<AuthRegister />} />
@@ -29,6 +34,15 @@ const App = () => {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="orders" element={<AdminOrders />} />
         </Route>
+
+        <Route path="/shop" element={<ShoppingLayout />} >
+          <Route path="home" element={<ShoppingHome />} />
+          <Route path="listing" element={<ShoppingListing />} />
+          <Route path="checkout" element={<ShoppingCheckout />} />
+          <Route path="account" element={<ShoppingUser />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} /> 
 
 
       </Routes>
